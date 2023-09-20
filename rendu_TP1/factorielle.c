@@ -13,6 +13,6 @@ TypeEntier factorielle (TypeEntier n) {
 int main(){
     for(int i = 1; i<=15; i++){
         TypeEntier resultat = factorielle(i);
-        printf("Factorielle de %d : %llu\n", i, resultat);
+        printf("Factorielle de %d : %hd\n", i, resultat);
     }return 0;
 }
