@@ -24,7 +24,7 @@ typedef enum  {
 // Définition de la structure Date
 typedef struct  {
     unsigned short jour;
-    enum Mois mois;
+    Mois mois;
     int annee;
 } Date;
 
