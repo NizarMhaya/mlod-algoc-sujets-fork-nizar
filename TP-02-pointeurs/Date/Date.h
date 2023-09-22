@@ -30,3 +30,5 @@ typedef struct  {
 
 void initialiseDate(Date *date) ;
 void afficheDate(Date *date) ;
+Date creerDateParCopie() ;
+Date *newDate() ;

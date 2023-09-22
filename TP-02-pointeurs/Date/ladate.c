@@ -19,12 +19,12 @@ Date creerDateParCopie() {
     Date nouvelleDate;
 
     printf("Entrez le jour (1-31) : ");
-    scanf("%d", &nouvelleDate.jour);
+    scanf("%d", (int *) &nouvelleDate.jour);
 
     printf("Entrez le mois (0-11) : ");
-    scanf("%d", &nouvelleDate.mois);
+    scanf("%d", (int *) &nouvelleDate.mois);
 
-    printf("Entrez l'année : ");
+    printf("Entrez l'annee : ");
     scanf("%d", &nouvelleDate.annee);
 
     return nouvelleDate;
@@ -40,12 +40,12 @@ Date *newDate() {
     }
 
     printf("Entrez le jour (1-31) : ");
-    scanf("%d", &(nouvelleDate->jour));
+    scanf("%d", (int *) &(nouvelleDate->jour));
 
     printf("Entrez le mois (0-11) : ");
-    scanf("%d", &(nouvelleDate->mois));
+    scanf("%d", (int *) &(nouvelleDate->mois));
 
-    printf("Entrez l'année : ");
+    printf("Entrez l'annee : ");
     scanf("%d", &(nouvelleDate->annee));
 
     return nouvelleDate;

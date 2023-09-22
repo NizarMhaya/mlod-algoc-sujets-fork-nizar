@@ -1,4 +1,6 @@
+#include <stdio.h>
 #include "Date.h"
+#include <stdlib.h> // Inclure la bibliothèque pour EXIT_FAILURE
 
 int main() {
     // Exemple d'utilisation des types Mois et Date
