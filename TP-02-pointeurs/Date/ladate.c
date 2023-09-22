@@ -2,9 +2,30 @@
 #include "Date.h"
 #include <stdlib.h> // Inclure la bibliothèque pour EXIT_FAILURE
 
+//libelle (mois)
+// Fonction pour convertir le numéro de mois en son libellé
+const char *libelleMois(Mois mois) {
+    static const char *nomsMois[] = {
+        "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+        "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+    };
+
+    if (mois >= JANVIER && mois <= DECEMBRE) {
+        return nomsMois[mois];
+    } else {
+        return "Mois invalide";
+    }
+}
+//// Fonction pour afficher une date
+//void afficheDate(const Date *date) {
+  //  const char *nomMois = libelleMois(date->mois);
+    //printf("Date : %d %s %d\n", date->jour, nomMois, date->annee);
+//}
+
 
 void afficheDate(Date *date) {
     printf("Date : %d %d %d\n", date->jour, date->mois, date->annee);
+    //printf("Date : %d %s %d\n", date->jour, date->libellemois (mois), date->annee)
 }
 
 // Fonction pour initialiser une date par copie
