@@ -19,7 +19,6 @@ Matrice *creer(int valeurInitiale, int nbreLignes, int nbreColonnes) {
 
     matrice->lignes = nbreLignes;
     matrice->colonnes = nbreColonnes;
-
     matrice->donnees = (int **)malloc(nbreLignes * sizeof(int *));
     if (matrice->donnees == NULL) {
         perror("Erreur d'allocation mémoire pour les lignes de la matrice");

@@ -48,12 +48,9 @@ int scanLineAsInt() {
 	return buf;
 }
 
-
-int main(void)
-{
-
-	int nbGagnants = scanLineAsInt();
-	printf("nbGagnants = %i\n",nbGagnants);
-
-	return EXIT_SUCCESS;
-}
+// Structure pour stocker les données d'un lauréat Turing
+typedef struct {
+    unsigned year;
+    char *name;
+    char *description;
+}TuringWinner;
