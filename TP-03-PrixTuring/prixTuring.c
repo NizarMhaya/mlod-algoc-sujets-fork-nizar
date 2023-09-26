@@ -25,7 +25,6 @@ int main(int argc, char** argv)
 	char filename[] = "turingWinners.csv";
 	char outputFilename[] = "out.csv";
 
-<<<<<<< HEAD
 	scanf("%250[^\n]", line);
 
 	if ( (c = getchar()) != '\n') {
@@ -55,42 +54,3 @@ typedef struct {
     char *name;
     char *description;
 }TuringWinner;
-||||||| d961cb1
-	scanf("%250[^\n]", line);
-
-	if ( (c = getchar()) != '\n') {
-		/* we did not get all the line */
-		line[250] = '[';
-		line[251] = line[252] = line[253] = '.';
-		line[254] = ']';
-		// line[255] = '\0'; // useless because already initialized by calloc
-
-		// let's skip all chars untli the end of line
-		while (( (c = getchar()) != '\n') && c != EOF) ;
-	}
-
-	return line;
-}
-
-/* This function scans a line of text (until \n), converts it as an integer and returns this integer */
-int scanLineAsInt() {
-	int buf;
-	scanf("%i\n",&buf);
-	return buf;
-}
-
-
-int main(void)
-{
-
-	int nbGagnants = scanLineAsInt();
-	printf("nbGagnants = %i\n",nbGagnants);
-
-	return EXIT_SUCCESS;
-}
-=======
-    // TODO
-
-	return EXIT_SUCCESS;
-}
->>>>>>> 5f72b25637cc14ef22f318ccd6a1b5807f656ddf
