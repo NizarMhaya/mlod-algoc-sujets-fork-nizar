@@ -110,6 +110,27 @@ void freeWinner(TuringWinner *winner) {
     free(winner->description);
 }
 
+//Cette fonction prend l'année recherchée, un tableau de TuringWinner contenant les données des lauréats et le nombre total de lauréats.
+//Elle parcourt ensuite le tableau pour trouver un match avec l'année recherchée.
+void infosAnnee(unsigned int anneeRecherchee, TuringWinner *turingWinners, int nombreGagnants) {
+    int i;
+    int trouve = 0;
+
+    for (i = 0; i < nombreGagnants; ++i) {
+        if (turingWinners[i].year == anneeRecherchee) {
+            trouve = 1;
+            printf("L'annee %u, le(s) gagnant(s) ont été : %s\n", turingWinners[i].year, turingWinners[i].name);
+            printf("Nature des travaux : %s\n", turingWinners[i].description);
+            break;
+        }
+    }
+
+    if (!trouve) {
+        printf("Aucun gagnant trouvé pour l'année %u.\n", anneeRecherchee);
+    }
+}
+
+
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // MAIN
@@ -117,9 +138,40 @@ void freeWinner(TuringWinner *winner) {
 
 int main(int argc, char** argv)
 {
+    system("chcp 65001");  // Changer l'encodage de la console à UTF-8 (pour Windows)
+    unsigned int anneeRecherchee;
+    TuringWinner *turingWinners; // Tableau pour stocker les lauréats
+    int nombreDeGagnants; // Variable pour stocker le nombre total de lauréats
+
     
-	char filename[] = "turingWinners.csv";
-	char outputFilename[] = "out.csv";
+    char *inputFileName = "turingWinners.csv"; // Nom par défaut du fichier d'entrée
+    char *outputFileName = "out.csv"; // Nom par défaut du fichier de sortie
+
+// Analyse des arguments en ligne de commande
+for (int i = 1; i < argc; i++) {
+    printf("Argument %d : %s\n", i, argv[i]); // Ajoutez cette ligne pour déboguer
+
+    if (strcmp(argv[i], "--info") == 0 && i + 1 < argc) {
+        anneeRecherchee = atoi(argv[i + 1]);
+        i += 2; // Passer à l'argument suivant
+        printf("Option --info détectée. Année recherchée : %d\n", anneeRecherchee); // Ajoutez cette ligne pour déboguer
+    } else if (strcmp(argv[i], "-i") == 0 && i + 1 < argc) {
+        inputFileName = argv[i + 1];
+        i += 2; // Passer à l'argument suivant
+        printf("Option -i détectée. Nom du fichier d'entrée : %s\n", inputFileName); // Ajoutez cette ligne pour déboguer
+    } else if (strcmp(argv[i], "-o") == 0 && i + 1 < argc) {
+        outputFileName = argv[i + 1];
+        i += 2; // Passer à l'argument suivant
+        printf("Option -o détectée. Nom du fichier de sortie : %s\n", outputFileName); // Ajoutez cette ligne pour déboguer
+    } else {
+        printf("Usage: %s [--info <année>] [-i input_file -o output_file]\n", argv[0]);
+        return EXIT_FAILURE;
+    }
+}
+
+//Le programme prend en charge deux options en ligne de commande : -i pour spécifier le fichier d'entrée et -o pour spécifier le fichier de sortie.
+//La boucle for parcourt les arguments en ligne de commande et met à jour les noms des fichiers d'entrée et de sortie en conséquence.
+
 FILE *inputFile = fopen("turingWinners.csv", "r");
     if (inputFile == NULL) {
         perror("Erreur lors de l'ouverture du fichier turingWinners.csv");
@@ -129,6 +181,7 @@ FILE *inputFile = fopen("turingWinners.csv", "r");
     FILE *outputFile = fopen("out.csv", "w");
     if (outputFile == NULL) {
         perror("Erreur lors de l'ouverture du fichier out.csv");
+        fclose(inputFile); // Fermer le fichier d'entrée avant de quitter
         exit(EXIT_FAILURE);
     }
 
@@ -139,9 +192,11 @@ FILE *inputFile = fopen("turingWinners.csv", "r");
         freeWinner(&winner);
     }
 
+
     fclose(inputFile);
     fclose(outputFile);
 
+    return 0;
     // TODO
 
 	return EXIT_SUCCESS;
