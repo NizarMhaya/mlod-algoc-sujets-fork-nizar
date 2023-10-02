@@ -53,6 +53,14 @@ int main(void){
 		printf("\n");
 	}
 
+	Element valeurATrouver = 2;
+	 if (estPresent(valeurATrouver, l)) {
+        printf("%d est present dans la liste.\n", valeurATrouver);
+    } else {
+        printf("%d n'est pas present dans la liste.\n", valeurATrouver);
+    }
+
+
 	printf("retirePremier_i(1)   : ");
 	l = retirePremier_i(1,l);
 	afficheListe_r(l);

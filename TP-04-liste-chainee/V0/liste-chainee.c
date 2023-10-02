@@ -147,16 +147,26 @@ bool equalsElement(Element e1, Element e2){
 // Retourne un pointeur sur l'élément de la liste l contenant la valeur v ou NULL
 // version itérative
 Liste cherche_i(Element v,Liste l) {
-	Liste p=1;
+	Liste p=l;
 	while (!estVide(p)){
-		
+		if (equalsElement(p->val,v)){
+			return p;
+		}
+		p=p->suiv;
+
 	}
-	return TODO;
+	return p;
 }
 
 // version récursive
 Liste cherche_r(Element v,Liste l) {
-	return TODO;
+	if (!estVide(l)&&!equalsElement(l->val,v)){
+		return cherche_r(v, l->suiv);
+	}
+	return l;
+}
+bool estPresent (Element v,Liste l){
+	return cherche_i(v,l) != NULL;
 }
 
 // Retourne la liste modifiée dans la laquelle le premier élément ayant la valeur v a été supprimé
