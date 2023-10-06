@@ -74,6 +74,14 @@ void afficherTableau(int *tableauStat) {
         printf("\n");
     }
 }
+Difference* computeDifferenceBeetween (const char* sequence1, const char* sequence2){
+	tabDiff diff = (Difference *)malloc(sizeof(Difference));
+	int indice = 0;
+	while (sequence1[indice]==sequence2[indice]){
+		indice++;
+	}
+
+}
 
 
 	
@@ -92,6 +100,9 @@ int main(void){
 	//printf (statistics(sequenceDeNucleotides));
 
 	// afficherTableau(statistics(sequenceDeNucleotides));
+
+	// J'ai perdu du temmps à essayer de faire fonctionner le print pour tester au fur et à mesure
+	// La loi du point final m'a fait bloquer sur cela pendant 1h30
 
 	return EXIT_SUCCESS;
 }
